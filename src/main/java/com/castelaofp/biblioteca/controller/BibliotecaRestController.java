@@ -82,7 +82,7 @@ public class BibliotecaRestController {
 		
 	}
 	
-	@Operation(summary = "Create a product and the thumbnail image")
+	@Operation(summary = "Create a copy attached to book")
 	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Copy created", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EjemplarDto.class)) }),
 			@ApiResponse(responseCode = "400", description = "Data not valid", content = {
