@@ -100,8 +100,8 @@ public class BibliotecaRestController {
 		}
 	}
 
-	private ResponseEntity<?> responseNotFound(Long categoryId) {
-		String errorMessage = "Category with id '" + categoryId + "' not found";
+	private ResponseEntity<?> responseNotFound(Long bookId) {
+		String errorMessage = "Book with id '" + bookId + "' not found";
 		return responseNotFound(errorMessage);
 	}
 
