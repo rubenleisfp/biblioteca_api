@@ -43,8 +43,8 @@ public class BibliotecaRestController {
 	@Operation(summary = "Get all books")
 	@GetMapping(value = "/libros")
 	public List<LibroDto> findAll() {
-		List<Libro> libros = bibliotecaService.findAllLibros();
-		return LibroMapper.toDto(libros);
+		List<LibroDto> libros = bibliotecaService.findAllLibros();
+		return libros;
 	}
 
 	
@@ -58,9 +58,8 @@ public class BibliotecaRestController {
 	@GetMapping(value = "/libros/{libroId}")
 	public ResponseEntity<?> getById(@PathVariable("libroId") Long libroId) {
 
-		Optional<Libro> libro = bibliotecaService.getById(libroId);
-		if (libro.isPresent()) {
-			LibroDto libroDto = LibroMapper.toDto(libro.get());
+		Optional<LibroDto> libroDto = bibliotecaService.getById(libroId);
+		if (libroDto.isPresent()) {
 			return ResponseEntity.ok().body(libroDto);
 		} else {
 			return responseNotFound(libroId);
