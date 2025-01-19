@@ -31,8 +31,8 @@ public class BibliotecaService {
 
 	/**
 	 * Crea un nuevo libro
-	 * 
-	 * @param libro
+	 *
+	 * @param libroDto
 	 * @return
 	 */
 	public LibroDto createLibro(LibroDto libroDto) {
@@ -44,14 +44,13 @@ public class BibliotecaService {
 
 	/**
 	 * Crea un ejemplar nuevo asociado al libro recibida como argumento
-	 * 
+	 *
 	 * Devuelve el ejemplar recien creado
-	 * 
+	 *
 	 * @param libroId
 	 * @param ejemplarDto
 	 * @return
 	 * @throws NotFoundException
-	 * @throws UploadException
 	 */
 	public EjemplarDto createEjemplar(Long libroId, EjemplarDto ejemplarDto) throws NotFoundException {
 		Optional<Libro> libro = libroRepository.findById(libroId);
@@ -72,21 +71,26 @@ public class BibliotecaService {
 
 	/**
 	 * Devuelve la lista con todos los libros
-	 * 
+	 *
 	 * @return
 	 */
-	public List<Libro> findAllLibros() {
-		return libroRepository.findAll();
+	public List<LibroDto> findAllLibros() {
+		return LibroMapper.toDto(libroRepository.findAll());
 	}
 
 	/**
 	 * Para el id proporcionado, devuelve el libro si existe
-	 * 
+	 *
 	 * @param libroId
 	 * @return
 	 */
-	public Optional<Libro> getById(Long libroId) {
+	public Optional<LibroDto> getById(Long libroId) {
 		Optional<Libro> libro = libroRepository.findById(libroId);
-		return libro;
+		if (libro.isPresent()) {
+			return Optional.of(LibroMapper.toDto(libro.get()));
+		} else {
+			LOG.warn("No se encontró el libro con id: " + libroId);
+			return Optional.empty();
+		}
 	}
 }
