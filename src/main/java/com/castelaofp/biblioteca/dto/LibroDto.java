@@ -21,12 +21,11 @@ public class LibroDto {
 		super();
 	}
 	
-	public LibroDto(Long id, String titulo, String autor, String isbn, List<EjemplarDto> ejemplares) {
+	public LibroDto(Long id, String titulo, String autor, List<EjemplarDto> ejemplares) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
-		this.isbn = isbn;
 		this.ejemplares = ejemplares;
 	}
 

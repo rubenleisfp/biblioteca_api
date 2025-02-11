@@ -18,7 +18,7 @@ public class LibroMapper {
     }
 
     public static LibroDto toDto(Libro entity) {
-    	LibroDto dto = new LibroDto(entity.getId(), entity.getTitulo(), entity.getAutor(), null);
+    	LibroDto dto = new LibroDto(entity.getId(), entity.getTitulo(), entity.getAutor(), entity.getIsbn(), null);
     	if (entity.getEjemplares()!= null) {
     		dto.setEjemplares(entity.getEjemplares().stream().map(EjemplarMapper::toDto).collect(Collectors.toList()));
     	}
@@ -30,6 +30,7 @@ public class LibroMapper {
     	Libro entity = new Libro();
     	entity.setTitulo(dto.getTitulo());
     	entity.setAutor(dto.getAutor());
+    	entity.setIsbn(dto.getIsbn());
         return entity;
     }
 }
