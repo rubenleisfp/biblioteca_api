@@ -23,8 +23,6 @@ public class Libro {
 	private String titulo;
 	@Column(name="autor")
 	private String autor;
-	@Column(name="isbn")
-	private String isbn;
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
     private List<Ejemplar> ejemplares = new ArrayList<>();
@@ -53,14 +51,6 @@ public class Libro {
 
 	public void setAutor(String autor) {
 		this.autor = autor;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
 	}
 
 	public List<Ejemplar> getEjemplares() {
