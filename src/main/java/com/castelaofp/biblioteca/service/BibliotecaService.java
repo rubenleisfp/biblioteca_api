@@ -106,4 +106,52 @@ public class BibliotecaService {
 		}
 
 	}
+
+
+	/**
+	 * Actualiza el libro con el id proporcionado con los valores de
+	 * <code>libroDto</code>.
+	 *
+	 * @param libroId
+	 *            el id del libro a actualizar
+	 * @param libroDto
+	 *            el objeto que contiene los valores a actualizar
+	 * @return el objeto {@link LibroDto} actualizado si el libro existe, o
+	 *         {@link Optional#empty()} si no existe
+	 */
+	public Optional<LibroDto> update(Long libroId, LibroDto libroDto) {
+		Optional<Libro> optionalBook = libroRepository.findById(libroId);
+		if (optionalBook.isPresent()) {
+			Libro libro = optionalBook.get();
+			// Actualizar los valores de la entidad
+			libro.setTitulo(libroDto.getTitulo());
+			libro.setAutor(libroDto.getAutor());
+
+			// Guardar la entidad actualizada
+			Libro libroActualizado = libroRepository.save(libro);
+
+			// Convertir a DTO antes de devolver
+			return Optional.of(LibroMapper.toDto(libroActualizado));
+		} else {
+			return Optional.empty();
+		}
+	}
+
+
+
+	/**
+	 * Borra el libro con el id proporcionado.
+	 *
+	 * @param libroId el id del libro a borrar
+	 * @return {@code true} si el libro ha sido borrado, {@code false} si no existe
+	 */
+	public boolean delete(Long libroId) {
+		Optional<Libro> optionalBook = libroRepository.findById(libroId);
+		if (optionalBook.isPresent()) {
+			libroRepository.deleteById(libroId);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -33,15 +33,12 @@ public class BibliotecaRestController {
 	@Autowired
 	private BibliotecaService bibliotecaService;
 
-
-
 	@Operation(summary = "Get all books")
 	@GetMapping(value = "/libros")
 	public List<LibroDto> findAll() {
 		List<LibroDto> libros = bibliotecaService.findAllLibros();
 		return libros;
 	}
-
 	
 	@Operation(summary = "Get a book by its id")
 	@ApiResponses(value = {
@@ -93,10 +90,47 @@ public class BibliotecaRestController {
 	}
 
 	@Operation(summary = "Get all books containing q word in title or author")
-	@GetMapping(value = "/libros/search/")
+	@GetMapping(value = "/libros/search")
 	public List<LibroDto> search(@RequestParam String q) {
 		List<LibroDto> libros = bibliotecaService.searchLibros(q);
 		return libros;
+	}
+
+	@Operation(summary = "Update book with id")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Book updated", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = LibroDto.class)) }),
+			@ApiResponse(responseCode = "400", description = "Data not valid", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }),
+			@ApiResponse(responseCode = "404", description = "Book not found", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+	@PutMapping("/libros/{libroId}")
+	public ResponseEntity<?> updateBook(@PathVariable("libroId") Long libroId, @Valid @RequestBody LibroDto libroDto) {
+		Optional<LibroDto> libroDtoUpdated = bibliotecaService.update(libroId, libroDto);
+		if (libroDtoUpdated.isPresent()) {
+			return ResponseEntity.ok(libroDtoUpdated);
+		} else {
+			return responseNotFound(libroId);
+		}
+	}
+
+	@Operation(summary = "Delete a book by its id")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Book deleted", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ApiResponse.class))
+			}),
+			@ApiResponse(responseCode = "404", description = "Book not found", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+			})
+	})
+	@DeleteMapping(value = "/{libroId}")
+	public ResponseEntity<?> delete(@PathVariable("libroId") Long libroId) {
+		boolean deleted = bibliotecaService.delete(libroId);
+		if (deleted) {
+			return ResponseEntity.ok().build();
+		} else {
+			return responseNotFound(libroId);
+		}
 	}
 
 	private ResponseEntity<?> responseNotFound(Long bookId) {

@@ -79,10 +79,15 @@ public class BibliotecaService {
 
 	}
 
+	/**
+	 * Busca los libros que contenga la palabra recibida como argumento en su titulo o en su autor
+	 * @param q
+	 * @return
+	 */
 	public List<LibroDto> searchLibros(String q) {
 		List<Libro> booksFound = libroRepository.findByAutorContainingOrTituloContaining(q);
-		List<LibroDto> booksFoundDto = LibroMapper.toDto(books);
-
+		List<LibroDto> booksFoundDto = LibroMapper.toDto(booksFound);
+		return booksFoundDto;
 	}
 
 	/**
@@ -100,5 +105,47 @@ public class BibliotecaService {
 			return Optional.empty();
 		}
 
+	}
+
+
+	/**
+	 * Actualiza el libro con el id proporcionado con los valores de
+	 * <code>libroDto</code>.
+	 *
+	 * @param libroId
+	 *            el id del libro a actualizar
+	 * @param libroDto
+	 *            el objeto que contiene los valores a actualizar
+	 * @return el objeto {@link LibroDto} actualizado si el libro existe, o
+	 *         {@link Optional#empty()} si no existe
+	 */
+	public Optional<LibroDto> update(Long libroId, LibroDto libroDto) {
+		Optional<Libro> optionalBook = libroRepository.findById(libroId);
+		if (optionalBook.isPresent()) {
+			Libro libro = optionalBook.get();
+			// Actualizar los valores de la entidad
+			libro.setTitulo(libroDto.getTitulo());
+			libro.setAutor(libroDto.getAutor());
+
+			// Guardar la entidad actualizada
+			Libro libroActualizado = libroRepository.save(libro);
+
+			// Convertir a DTO antes de devolver
+			return Optional.of(LibroMapper.toDto(libroActualizado));
+		} else {
+			return Optional.empty();
+		}
+	}
+
+
+	@
+	public boolean delete(Long libroId) {
+		Optional<Libro> optionalBook = libroRepository.findById(libroId);
+		if (optionalBook.isPresent()) {
+			libroRepository.deleteById(libroId);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
