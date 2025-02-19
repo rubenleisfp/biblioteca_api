@@ -138,7 +138,13 @@ public class BibliotecaService {
 	}
 
 
-	@
+
+	/**
+	 * Borra el libro con el id proporcionado.
+	 *
+	 * @param libroId el id del libro a borrar
+	 * @return {@code true} si el libro ha sido borrado, {@code false} si no existe
+	 */
 	public boolean delete(Long libroId) {
 		Optional<Libro> optionalBook = libroRepository.findById(libroId);
 		if (optionalBook.isPresent()) {
