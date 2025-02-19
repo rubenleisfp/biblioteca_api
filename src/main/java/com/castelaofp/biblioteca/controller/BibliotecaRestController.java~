@@ -93,7 +93,7 @@ public class BibliotecaRestController {
 	}
 
 	@Operation(summary = "Get all books containing q word in title or author")
-	@GetMapping(value = "/libros/search")
+	@GetMapping(value = "/libros/search/")
 	public List<LibroDto> search(@RequestParam String q) {
 		List<LibroDto> libros = bibliotecaService.searchLibros(q);
 		return libros;

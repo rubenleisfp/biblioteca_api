@@ -79,15 +79,10 @@ public class BibliotecaService {
 
 	}
 
-	/**
-	 * Busca los libros que contenga la palabra recibida como argumento en su titulo o en su autor
-	 * @param q
-	 * @return
-	 */
 	public List<LibroDto> searchLibros(String q) {
 		List<Libro> booksFound = libroRepository.findByAutorContainingOrTituloContaining(q);
-		List<LibroDto> booksFoundDto = LibroMapper.toDto(booksFound);
-		return booksFoundDto;
+		List<LibroDto> booksFoundDto = LibroMapper.toDto(books);
+
 	}
 
 	/**
