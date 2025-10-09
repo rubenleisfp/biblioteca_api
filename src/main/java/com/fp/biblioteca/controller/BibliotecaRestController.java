@@ -1,4 +1,4 @@
-package com.castelaofp.biblioteca.controller;
+package com.fp.biblioteca.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,12 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.castelaofp.biblioteca.dto.EjemplarDto;
-import com.castelaofp.biblioteca.dto.LibroDto;
-import com.castelaofp.biblioteca.mapper.LibroMapper;
-import com.castelaofp.biblioteca.model.Libro;
-import com.castelaofp.biblioteca.service.BibliotecaService;
-import com.castelaofp.biblioteca.service.exceptions.NotFoundException;
+import com.fp.biblioteca.dto.EjemplarDto;
+import com.fp.biblioteca.dto.LibroDto;
+import com.fp.biblioteca.service.BibliotecaService;
+import com.fp.biblioteca.service.exceptions.NotFoundException;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

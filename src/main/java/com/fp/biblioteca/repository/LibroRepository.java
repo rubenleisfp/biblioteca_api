@@ -1,8 +1,8 @@
-package com.castelaofp.biblioteca.repository;
+package com.fp.biblioteca.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.castelaofp.biblioteca.model.Libro;
+import com.fp.biblioteca.model.Libro;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

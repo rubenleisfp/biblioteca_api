@@ -1,8 +1,8 @@
-package com.castelaofp.biblioteca.mapper;
+package com.fp.biblioteca.mapper;
 
-import com.castelaofp.biblioteca.dto.UserDto;
-import com.castelaofp.biblioteca.dto.UserRolEnum;
-import com.castelaofp.biblioteca.model.User;
+import com.fp.biblioteca.dto.UserDto;
+import com.fp.biblioteca.dto.UserRolEnum;
+import com.fp.biblioteca.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

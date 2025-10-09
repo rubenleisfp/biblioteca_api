@@ -1,8 +1,8 @@
-package com.castelaofp.biblioteca.controller;
+package com.fp.biblioteca.controller;
 
-import com.castelaofp.biblioteca.dto.UserDto;
-import com.castelaofp.biblioteca.model.User;
-import com.castelaofp.biblioteca.service.UserService;
+import com.fp.biblioteca.dto.UserDto;
+import com.fp.biblioteca.model.User;
+import com.fp.biblioteca.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

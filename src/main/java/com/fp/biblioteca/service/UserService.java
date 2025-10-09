@@ -1,9 +1,9 @@
-package com.castelaofp.biblioteca.service;
+package com.fp.biblioteca.service;
 
-import com.castelaofp.biblioteca.dto.UserDto;
-import com.castelaofp.biblioteca.mapper.UserMapper;
-import com.castelaofp.biblioteca.model.User;
-import com.castelaofp.biblioteca.repository.UserRepository;
+import com.fp.biblioteca.dto.UserDto;
+import com.fp.biblioteca.mapper.UserMapper;
+import com.fp.biblioteca.model.User;
+import com.fp.biblioteca.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

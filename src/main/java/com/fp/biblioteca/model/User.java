@@ -1,4 +1,4 @@
-package com.castelaofp.biblioteca.model;
+package com.fp.biblioteca.model;
 
 import jakarta.persistence.*;
 
