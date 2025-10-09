@@ -1,4 +1,4 @@
-package com.castelaofp.biblioteca.service;
+package com.fp.biblioteca.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.castelaofp.biblioteca.dto.EjemplarDto;
-import com.castelaofp.biblioteca.dto.LibroDto;
-import com.castelaofp.biblioteca.mapper.EjemplarMapper;
-import com.castelaofp.biblioteca.mapper.LibroMapper;
-import com.castelaofp.biblioteca.model.Ejemplar;
-import com.castelaofp.biblioteca.model.Libro;
-import com.castelaofp.biblioteca.repository.EjemplarRepository;
-import com.castelaofp.biblioteca.repository.LibroRepository;
-import com.castelaofp.biblioteca.service.exceptions.NotFoundException;
+import com.fp.biblioteca.dto.EjemplarDto;
+import com.fp.biblioteca.dto.LibroDto;
+import com.fp.biblioteca.mapper.EjemplarMapper;
+import com.fp.biblioteca.mapper.LibroMapper;
+import com.fp.biblioteca.model.Ejemplar;
+import com.fp.biblioteca.model.Libro;
+import com.fp.biblioteca.repository.EjemplarRepository;
+import com.fp.biblioteca.repository.LibroRepository;
+import com.fp.biblioteca.service.exceptions.NotFoundException;
 
 @Service
 public class BibliotecaService {

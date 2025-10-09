@@ -1,4 +1,4 @@
-package com.castelaofp.biblioteca.model;
+package com.fp.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;

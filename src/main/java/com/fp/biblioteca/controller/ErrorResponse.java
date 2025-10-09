@@ -1,4 +1,4 @@
-package com.castelaofp.biblioteca.controller;
+package com.fp.biblioteca.controller;
 
 public class ErrorResponse {
  
