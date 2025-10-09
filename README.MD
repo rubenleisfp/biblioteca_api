@@ -1,43 +1,43 @@
 # Biblioteca API
 
-Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spring Boot. La API permite realizar operaciones CRUD sobre libros y ejemplares, así como realizar búsquedas y gestionar administradores.
+Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spring Boot. La API permite realizar operaciones CRUD sobre libros y ejemplares, así como realizar búsquedas y gestionar usuarios.
 
 ## Estructura del Proyecto
 
 - **Controller**: Maneja las solicitudes HTTP y las respuestas. Las principales clases son:
   - `BibliotecaRestController`: Controlador para gestionar libros y ejemplares.
-  - `AdminRestController`: Controlador para gestionar administradores.
+  - `UserRestController`: Controlador para gestionar usuarios.
 
 - **Service**: Contiene la lógica de negocio de la aplicación.
   - `BibliotecaService`: Proporciona métodos para gestionar libros y ejemplares.
-  - `AdminService`: Proporciona métodos para gestionar administradores.
+  - `UserService`: Proporciona métodos para gestionar usuarios.
 
 - **Repository**: Interactúa con la base de datos.
   - `LibroRepository`: Repositorio para la entidad `Libro`.
   - `EjemplarRepository`: Repositorio para la entidad `Ejemplar`.
-  - `AdminRepository`: Repositorio para la entidad `Admin`.
+  - `UserRepository`: Repositorio para la entidad `User`.
 
 - **Model**: Define las entidades de la base de datos.
   - `Libro`: Entidad que representa un libro.
   - `Ejemplar`: Entidad que representa un ejemplar de un libro.
-  - `Admin`: Entidad que representa un administrador.
+  - `User`: Entidad que representa un usuario.
 
 - **DTO (Data Transfer Object)**: Objetos que facilitan la transferencia de datos entre las capas de la aplicación.
   - `LibroDto`: DTO para la entidad `Libro`.
   - `EjemplarDto`: DTO para la entidad `Ejemplar`.
-  - `AdminDto`: DTO para la entidad `Admin`.
+  - `UserDto`: DTO para la entidad `User`.
 
 - **Mapper**: Contiene las clases que convierten entidades a DTOs y viceversa.
   - `LibroMapper`: Mapea entre `Libro` y `LibroDto`.
   - `EjemplarMapper`: Mapea entre `Ejemplar` y `EjemplarDto`.
-  - `AdminMapper`: Mapea entre `Admin` y `AdminDto`.
+  - `UserMapper`: Mapea entre `User` y `UserDto`.
 
 ## Base de Datos
 
 La base de datos del proyecto contiene las siguientes tablas:
 - `Libro`: Almacena información sobre los libros, como título y autor.
 - `Ejemplar`: Almacena información sobre los ejemplares de los libros.
-- `Admin`: Almacena información sobre los administradores.
+- `User`: Almacena información sobre los usuarios.
 
 ## Instalación
 

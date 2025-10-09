@@ -7,6 +7,7 @@ CREATE TABLE Libro (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     autor VARCHAR(255) NOT NULL
+
 );
 
 -- Crear la tabla Ejemplar
@@ -18,7 +19,8 @@ CREATE TABLE Ejemplar (
     FOREIGN KEY (libro_id) REFERENCES Libro(id)
 );
 
-CREATE TABLE Admin (
+CREATE TABLE User (
     email VARCHAR(255) PRIMARY KEY,
-    password VARCHAR(255)
+    password VARCHAR(255),
+    rol VARCHAR(64) NOT NULL
 )

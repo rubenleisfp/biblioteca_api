@@ -1,15 +1,8 @@
 package com.castelaofp.biblioteca.controller;
 
-import com.castelaofp.biblioteca.dto.AdminDto;
-import com.castelaofp.biblioteca.dto.EjemplarDto;
-import com.castelaofp.biblioteca.dto.LibroDto;
-import com.castelaofp.biblioteca.mapper.AdminMapper;
-import com.castelaofp.biblioteca.mapper.LibroMapper;
-import com.castelaofp.biblioteca.model.Admin;
-import com.castelaofp.biblioteca.model.Libro;
-import com.castelaofp.biblioteca.service.AdminService;
-import com.castelaofp.biblioteca.service.BibliotecaService;
-import com.castelaofp.biblioteca.service.exceptions.NotFoundException;
+import com.castelaofp.biblioteca.dto.UserDto;
+import com.castelaofp.biblioteca.model.User;
+import com.castelaofp.biblioteca.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -29,17 +22,17 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("/api/admin")
-public class AdminRestController {
+@RequestMapping("/api/user")
+public class UserRestController {
 
 	@Autowired
-	private AdminService adminService;
+	private UserService userService;
 
-	@Operation(summary = "Get all admins")
+	@Operation(summary = "Get all users")
 	@GetMapping()
-	public List<AdminDto> findAll() {
-		List<AdminDto> admins = adminService.findAll();
-		return admins;
+	public List<UserDto> findAll() {
+		List<UserDto> users = userService.findAll();
+		return users;
 	}
 
 	@Operation(summary = "Login")
@@ -48,9 +41,9 @@ public class AdminRestController {
 			@ApiResponse(responseCode = "400", description = "Bad request", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	@PostMapping("/login")
-	public ResponseEntity<?> createBook(@Valid @RequestBody AdminDto adminDto) {
-		Optional<Admin> optionalAdmin = adminService.findByEmailAndPassword(adminDto);
-		if (optionalAdmin.isEmpty()) {
+	public ResponseEntity<?> createBook(@Valid @RequestBody UserDto adminDto) {
+		Optional<User> optionalUser = userService.findByEmailAndPassword(adminDto);
+		if (optionalUser.isEmpty()) {
 			return responseBadRequest("Invalid credentials");
 		} else {
 			return new ResponseEntity<>(HttpStatus.OK);
