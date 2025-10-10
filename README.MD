@@ -39,6 +39,20 @@ La base de datos del proyecto contiene las siguientes tablas:
 - `Ejemplar`: Almacena información sobre los ejemplares de los libros.
 - `User`: Almacena información sobre los usuarios.
 
+# Seguridad
+Se agregaron validadores para UserDto. Es necesario que se ingrese un email y un password
+Se agrego un ControllerAdvice para manejar los errores
+
+Se aplica seguridad por roles mediante Autenticación Básica.
+El cliente debe enviar sus credenciales en el cabezal de autenticación con el formato `Basic <base64(username:password)>`.
+El servidor verifica las credenciales y asigna el rol correspondiente al usuario.
+Las credenciales de los usuarios se guardan en claro en la base de datos por simplicidad.
+Cambiarlo a Bcrypt para mejorar la seguridad es sencillo, ya que solo hay que cambiarlo en SecurityConfig
+
+Acceso a recursos por rol:
+1. Para acceder a cualquier URL se debe estar autenticado
+2. Para acceder a la URL api/user GET debe tener rol 'ADMIN'
+
 ## Instalación
 
 1. Clonar el repositorio: `git clone <URL_REPOSITORIO>`
@@ -50,7 +64,9 @@ La base de datos del proyecto contiene las siguientes tablas:
 
 La API expone varios endpoints para gestionar libros y ejemplares. Puedes probar estos endpoints mediante Swagger.
 
-**URL de Swagger**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+Por motivos de seguridad se oculta la documentación de Swagger en el repositorio.
+**URL de Swagger**: [https://localhost:8443/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
 
 ## Contribución
 
