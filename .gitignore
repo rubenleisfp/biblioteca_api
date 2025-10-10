@@ -32,3 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 .mvn/
+*.xml~
+README.MD~
+src/main/java/com/fp/biblioteca/service/security/MiUserDetailsService.java~
+*.java~
