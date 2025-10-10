@@ -2,10 +2,12 @@ package com.fp.biblioteca.service.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -27,22 +29,28 @@ public class SecurityConfig {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    // 🔹 Sustituye al antiguo configure(HttpSecurity http)
+    // Sustituye al antiguo configure(HttpSecurity http)
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // desactivar CSRF para pruebas en APIs
+                // Desactivar CSRF: no es necesario en APIs REST (no usan cookies ni formularios)
+                .csrf(csrf -> csrf.disable())
+                // Configurar autorización de endpoints
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/public/**").permitAll()
+                        // Solo los usuarios con rol ADMIN pueden hacer GET en /user
+                        .requestMatchers(HttpMethod.GET, "/api/user").hasRole("ADMIN")
+                        // Cualquier otro recurso requiere estar autenticado
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults());
+                // Habilitar autenticación básica (ideal para Postman, curl, etc.)
+                .httpBasic(Customizer.withDefaults())
+                // Deshabilitar gestión de sesión (API stateless)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
 
-    // 🔹 Sustituye al antiguo configure(AuthenticationManagerBuilder auth)
+    // Sustituye al antiguo configure(AuthenticationManagerBuilder auth)
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authConfig) throws Exception {
