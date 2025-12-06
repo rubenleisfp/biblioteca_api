@@ -67,15 +67,3 @@ La API expone varios endpoints para gestionar libros y ejemplares. Puedes probar
 Por motivos de seguridad se oculta la documentación de Swagger en el repositorio.
 **URL de Swagger**: [https://localhost:8443/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-
-## Contribución
-
-Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
-1. Haz un fork del repositorio.
-2. Crea una rama con tu nueva funcionalidad (`git checkout -b feature/nueva-funcionalidad`).
-3. Haz commit de tus cambios (`git commit -am 'Añadir nueva funcionalidad'`).
-4. Empuja la rama (`git push origin feature/nueva-funcionalidad`).
-5. Abre un Pull Request.
-
-## Licencia
-
