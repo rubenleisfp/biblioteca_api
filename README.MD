@@ -2,6 +2,16 @@
 
 Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spring Boot. La API permite realizar operaciones CRUD sobre libros y ejemplares, así como realizar búsquedas y gestionar usuarios.
 
+## Rama
+En esta rama la aplicación se ejecuta bajo el protocolo https
+Para ver cualquier recursos requiere estar autenticado
+Para ello debe introducirse un email y password existentes en la BBDD
+Para acceder a la URL api/user GET debe tener rol 'ADMIN'
+
+
+## URL Base
+https://localhost:8443/swagger-ui/index.html
+
 ## Estructura del Proyecto
 
 - **Controller**: Maneja las solicitudes HTTP y las respuestas. Las principales clases son:
