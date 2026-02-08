@@ -2,13 +2,21 @@ package com.fp.biblioteca.service.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class JwtUtil {
 
-    //CLAVE SECRETA MUY SEGURA. DEBERIA ESTAR GUARDADA EN UN VAULT DE SEGURIDAD.
-    private static final String SECRET_KEY = "VALERON";
+    //AL MENOS 32 CARACTERES
+    private static final String SECRET =
+            "MOLINA_MANUEL_PABLO_NAYBET_DONATO_ROMERO_MAURO_SERGIO_VICTOR_FRAN_VALERON_MAKAAY";
+
+    //CONVIERTE LA CLAVE EN BYTES
+    private static final SecretKey SECRET_KEY =
+            Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
 
     public static String generateToken(String email, String role) {
 

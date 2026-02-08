@@ -1,4 +1,4 @@
-package com.example.jwtapi.security;
+package com.fp.biblioteca.service.security;
 
 import com.fp.biblioteca.service.security.JwtFilter;
 import org.springframework.context.annotation.Bean;
