@@ -7,6 +7,12 @@ En esta rama la aplicación se ejecuta bajo el protocolo https
 Para ver cualquier recursos requiere estar autenticado
 Para ello debe introducirse un email y password existentes en la BBDD
 Para acceder a la URL api/user GET debe tener rol 'ADMIN'
+Se utiliza JWT para autenticación por lo que para poder acceder a un recurso el usuario
+deberá:
+1. Realizar un POST a auth/login con el email y password del usuario
+2. Si es correcto, se le devolvera el token JWT
+3. Con ese token, realizar llamadas con Auth Type Bearer Token
+4. Si es un usuario admin pordrá llamar a los métodos que están anotados para ese rol
 
 
 ## URL Base

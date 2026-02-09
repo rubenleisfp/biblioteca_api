@@ -17,7 +17,7 @@ import java.util.Optional;
 public class UserService {
     private static Logger LOG = LoggerFactory.getLogger(UserService.class);
 
-    //private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Autowired
     private UserRepository userRepository;
@@ -37,8 +37,9 @@ public class UserService {
     }
 
     public boolean checkPassword(String rawPassword, String encodedPassword) {
-        //return encoder.matches(rawPassword, encodedPassword);
-        return rawPassword.equals(encodedPassword);
+        //DESCOMENTAR SOLO PARA PRUEBAS. COMPARA LOS PASSWORD EN CLARO
+        //return rawPassword.equals(encodedPassword);
+        return encoder.matches(rawPassword, encodedPassword);
     }
 
 }
