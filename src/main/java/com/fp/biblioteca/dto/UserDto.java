@@ -1,13 +1,14 @@
 package com.fp.biblioteca.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.Objects;
 
 public class UserDto {
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String password;
-
-
-
     private UserRolEnum role;
 
     public UserDto() {}
