@@ -45,6 +45,10 @@ La base de datos del proyecto contiene las siguientes tablas:
 - `Ejemplar`: Almacena información sobre los ejemplares de los libros.
 - `User`: Almacena información sobre los usuarios.
 
+En src/main/resources/design.database hay scripts tanto para:
+MySQL
+SQLite
+
 ## Instalación
 
 1. Clonar el repositorio: `git clone <URL_REPOSITORIO>`
