@@ -55,6 +55,10 @@ La base de datos del proyecto contiene las siguientes tablas:
 - `Ejemplar`: Almacena información sobre los ejemplares de los libros.
 - `User`: Almacena información sobre los usuarios.
 
+En src/main/resources/design.database hay scripts tanto para:
+MySQL
+SQLite
+
 # Seguridad
 Se agregaron validadores para UserDto. Es necesario que se ingrese un email y un password
 Se agrego un ControllerAdvice para manejar los errores
