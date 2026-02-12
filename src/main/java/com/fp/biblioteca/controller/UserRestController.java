@@ -43,7 +43,7 @@ public class UserRestController {
 			@ApiResponse(responseCode = "400", description = "Bad request", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
 	@PostMapping("/login")
-	public ResponseEntity<?> createBook(@Valid @RequestBody UserDto adminDto) {
+	public ResponseEntity<?> login(@Valid @RequestBody UserDto adminDto) {
 		Optional<User> optionalUser = userService.findByEmailAndPassword(adminDto);
 		if (optionalUser.isEmpty()) {
 			return responseBadRequest("Invalid credentials");
