@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fp.biblioteca.dto.ValidationErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,11 +25,12 @@ import jakarta.servlet.http.HttpServletRequest;
             for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
                 errors.add(fieldError.getField() + ": " + fieldError.getDefaultMessage());
             }
-            Map<String, Object> response = new HashMap<>();
-            response.put("errors", errors);
-            response.put("path", request.getRequestURI());
-            response.put("timestamp", System.currentTimeMillis());
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            ValidationErrorDto validationErrorDto = new ValidationErrorDto();
+            validationErrorDto.setErrors(errors);
+            validationErrorDto.setPath(request.getRequestURI());
+            validationErrorDto.setTimestamp(System.currentTimeMillis());
+
+            return new ResponseEntity<>(validationErrorDto, HttpStatus.BAD_REQUEST);
         }
 	
 }

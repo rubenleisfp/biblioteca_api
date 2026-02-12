@@ -1,6 +1,7 @@
 package com.fp.biblioteca.controller;
 
 import com.fp.biblioteca.dto.UserDto;
+import com.fp.biblioteca.dto.ValidationErrorDto;
 import com.fp.biblioteca.model.User;
 import com.fp.biblioteca.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,15 +40,11 @@ public class UserRestController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "OK", content = {}),
 			@ApiResponse(responseCode = "400", description = "Bad request", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorDto.class)) }) })
 	@PostMapping("/login")
-	public ResponseEntity<?> createBook(@Valid @RequestBody UserDto adminDto) {
+	public ResponseEntity<?> login(@Valid @RequestBody UserDto adminDto) {
 		Optional<User> optionalUser = userService.findByEmailAndPassword(adminDto);
-		if (optionalUser.isEmpty()) {
-			return responseBadRequest("Invalid credentials");
-		} else {
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
+        return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	private ResponseEntity<?> responseBadRequest(String message) {
