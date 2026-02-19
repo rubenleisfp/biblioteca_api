@@ -3,7 +3,8 @@
 Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spring Boot. La API permite realizar operaciones CRUD sobre libros y ejemplares, así como realizar búsquedas y gestionar usuarios.
 
 ## Rama
-El contenido de este RAMA es un API sin securizar.
+En esta rama tememos varios perfiles creados DEV y PROD.
+No hay implementada seguridad
 
 ## URL
 http://localhost:8080/swagger-ui/index.html
