@@ -1,17 +1,20 @@
 package com.fp.biblioteca.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-
+@Table(name = "User")
 @Entity
 public class User {
 
     @Id
     private String email;
+    @NotNull
     @Column(name = "password")
     private String password;
+    @NotNull
     @Column(name="rol")
     private String rol;
 

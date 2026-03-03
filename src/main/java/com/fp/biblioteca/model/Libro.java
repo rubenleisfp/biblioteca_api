@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Libro {
@@ -19,8 +20,10 @@ public class Libro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	@Column(name="titulo")
 	private String titulo;
+	@NotNull
 	@Column(name="autor")
 	private String autor;
 

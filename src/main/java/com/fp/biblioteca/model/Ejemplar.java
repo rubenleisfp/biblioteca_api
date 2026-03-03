@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Ejemplar {
@@ -15,9 +16,11 @@ public class Ejemplar {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	@Column(name = "numero_ejemplar")
 	private String numeroEjemplar;
-	
+
+	@NotNull
 	@Column(name = "estado")
 	private String estado;
 
