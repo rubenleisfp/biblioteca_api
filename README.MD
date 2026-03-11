@@ -4,6 +4,7 @@ Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spri
 
 ## Rama
 En esta rama la aplicación se ejecuta bajo el protocolo https
+Se utiliza Basic Authentication
 Para ver cualquier recursos requiere estar autenticado
 Para ello debe introducirse un email y password existentes en la BBDD
 Para acceder a la URL api/user GET debe tener rol 'ADMIN'
