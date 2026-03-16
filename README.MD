@@ -5,6 +5,9 @@ Este proyecto es una API de gestión de una biblioteca, desarrollada usando Spri
 ## Rama
 En esta rama tememos varios perfiles creados DEV y PROD.
 No hay implementada seguridad
+Se instala tanto en local como en AWS una instancia de Postgresql
+Se acceder con PgAdmin desde local a ambas.
+
 
 ## URL
 http://localhost:8080/swagger-ui/index.html
@@ -46,9 +49,10 @@ La base de datos del proyecto contiene las siguientes tablas:
 - `Ejemplar`: Almacena información sobre los ejemplares de los libros.
 - `User`: Almacena información sobre los usuarios.
 
-En src/main/resources/design.database hay scripts tanto para:
-MySQL
-SQLite
+En `src/main/resources/design/database` hay scripts para:
+- PostgreSQL
+- MySQL
+- SQLite
 
 ## Instalación
 
