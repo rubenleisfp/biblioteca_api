@@ -9,9 +9,9 @@ import jakarta.validation.constraints.NotEmpty;
 public class LibroDto {
 
 	private Long id;
-    @NotEmpty
+	@NotEmpty
 	private String titulo;
-    @NotEmpty
+	@NotEmpty
 	private String autor;
 	private List<EjemplarDto> ejemplares = new ArrayList<>();
 	
